@@ -1,0 +1,698 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#5b1d29">
+<title>Nikah Invitation | Gul Aftab & Asifa</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root{
+  --maroon:#5b1d29;
+  --maroon-deep:#3f121d;
+  --rose:#a96f70;
+  --rose-soft:#c99591;
+  --sage:#777b62;
+  --sage-light:#a9aa8b;
+  --gold:#b08a42;
+  --gold-light:#dfc990;
+  --paper:#f7efe3;
+  --paper-2:#fbf6ee;
+  --ink:#493936;
+  --muted:#766963;
+  --line:rgba(176,138,66,.52);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 15% 12%,rgba(169,111,112,.10),transparent 24%),
+    radial-gradient(circle at 85% 78%,rgba(119,123,98,.10),transparent 25%),
+    linear-gradient(135deg,#eee1d1,#faf4ea 45%,#eee2d4);
+  font-family:'Montserrat',sans-serif;
+  text-align:center;
+}
+
+body:before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.42;
+  background-image:
+    radial-gradient(rgba(80,55,40,.16) .55px,transparent .7px);
+  background-size:9px 9px;
+}
+
+/* ---------- opening ---------- */
+#opening-overlay{
+  position:fixed;inset:0;z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;background:transparent;
+}
+.curtain{
+  position:absolute;top:0;width:51%;height:100%;
+  background:
+    repeating-linear-gradient(90deg,
+      #3d111b 0,#5b1d29 24px,#6e2634 48px,#511722 72px);
+  box-shadow:inset 0 0 70px rgba(0,0,0,.45);
+  transition:transform 1.45s cubic-bezier(.77,0,.175,1);
+}
+.curtain.left{left:0;border-right:2px solid var(--gold)}
+.curtain.right{right:0;border-left:2px solid var(--gold)}
+#opening-overlay.open .left{transform:translateX(-100%)}
+#opening-overlay.open .right{transform:translateX(100%)}
+
+.opening-content{
+  position:relative;z-index:2;color:#fff4dc;
+  cursor:pointer;transition:opacity .45s,transform .45s;
+}
+#opening-overlay.open .opening-content{opacity:0;transform:scale(.75)}
+.opening-ornament{
+  width:122px;height:122px;margin:0 auto 22px;
+  border:1px solid var(--gold-light);border-radius:50%;
+  display:grid;place-items:center;
+  background:radial-gradient(circle,#d9bd78,#9d752f 70%,#6e4c20);
+  box-shadow:0 0 0 7px rgba(223,201,144,.12),0 0 40px rgba(223,201,144,.24);
+  animation:sealPulse 2.2s ease-in-out infinite;
+}
+.opening-ornament span{
+  font:3rem 'Great Vibes',cursive;
+  transform:rotate(-7deg);
+}
+.opening-arabic{font:1.25rem 'Amiri',serif;margin-bottom:8px}
+.opening-text{
+  font:.72rem 'Cinzel',serif;letter-spacing:3px;text-transform:uppercase;
+  opacity:.9;
+}
+.opening-line{width:90px;height:1px;background:var(--gold-light);margin:14px auto}
+
+/* ---------- page ---------- */
+.page{
+  width:min(100%,560px);
+  margin:auto;
+  padding:22px 14px 44px;
+}
+.hero{
+  position:relative;
+  overflow:hidden;
+  min-height:820px;
+  padding:18px 26px 34px;
+  background:
+    linear-gradient(rgba(255,251,243,.78),rgba(249,239,226,.92)),
+    radial-gradient(circle at 50% 20%,#fffaf0,#ead9c7);
+  border:1px solid var(--gold);
+  box-shadow:0 20px 55px rgba(63,35,25,.14);
+}
+
+/* vintage inner frame */
+.hero:before{
+  content:"";
+  position:absolute;inset:9px;
+  border:1px solid rgba(176,138,66,.45);
+  pointer-events:none;
+}
+.hero:after{
+  content:"";
+  position:absolute;inset:17px;
+  border:1px solid rgba(176,138,66,.18);
+  pointer-events:none;
+}
+
+/* floral artwork — intentionally muted like the reference */
+.floral{
+  position:absolute;width:210px;height:230px;z-index:3;
+  pointer-events:none;overflow:visible;
+}
+.floral.tl{top:-3px;left:-2px}
+.floral.tr{top:-3px;right:-2px;transform:scaleX(-1)}
+.floral.bl{bottom:-7px;left:-2px;transform:scaleY(-1)}
+.floral.br{bottom:-7px;right:-2px;transform:scale(-1,-1)}
+
+.branch{fill:none;stroke:#6e715b;stroke-width:2.3;stroke-linecap:round}
+.branch2{fill:none;stroke:#96977a;stroke-width:1.35;stroke-linecap:round}
+.leaf{fill:#85866a;stroke:#5e604e;stroke-width:.7}
+.leaf-light{fill:#b4ad8b;stroke:#77785e;stroke-width:.7}
+.petal-rose{fill:#ad7473;stroke:#7d5554;stroke-width:.7}
+.petal-pale{fill:#c9948e;stroke:#8f6260;stroke-width:.7}
+.petal-cream{fill:#c8c39a;stroke:#858263;stroke-width:.7}
+.center{fill:#c39a53}
+
+/* typography */
+.nikah-label{
+  position:relative;z-index:5;
+  margin-top:28px;
+  color:var(--rose);
+  font:4.8rem/1 'Great Vibes',cursive;
+  transform:rotate(-3deg);
+  text-shadow:1px 2px 0 rgba(255,255,255,.8);
+}
+.est{
+  position:relative;z-index:5;
+  margin-top:-5px;
+  color:var(--gold);
+  font:.58rem 'Cinzel',serif;letter-spacing:5px;text-transform:uppercase;
+}
+.bismillah{
+  position:relative;z-index:5;
+  margin-top:40px;color:var(--maroon);
+  font:2rem 'Amiri',serif;
+}
+.translation{
+  position:relative;z-index:5;
+  color:#796c64;font:.57rem 'Cinzel',serif;letter-spacing:.7px;
+}
+.intro{
+  position:relative;z-index:5;
+  margin:28px auto 0;max-width:390px;
+  color:#6e625b;font:.7rem/1.8 'Montserrat',sans-serif;
+  letter-spacing:1.4px;text-transform:uppercase;
+}
+.ornament-row{
+  position:relative;z-index:5;
+  display:flex;align-items:center;justify-content:center;gap:11px;
+  margin:17px auto;
+}
+.ornament-row i{
+  width:65px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.ornament-row span{color:var(--gold);font-size:.95rem}
+
+.host{
+  position:relative;z-index:5;
+  color:var(--maroon);
+  font:600 1rem 'Cinzel',serif;
+  letter-spacing:1px;
+}
+.host-copy{
+  position:relative;z-index:5;
+  margin:8px auto 0;max-width:360px;
+  color:#70655f;font:.68rem/1.65 'Montserrat',sans-serif;
+}
+.names{
+  position:relative;z-index:5;
+  margin:23px 0 18px;
+}
+.name{
+  color:var(--maroon);
+  font:3.25rem/1.08 'Great Vibes',cursive;
+  text-shadow:1px 2px 0 #fff;
+}
+.parent{
+  margin:3px 0 12px;color:#80736d;font:.63rem 'Montserrat',sans-serif;
+}
+.weds{
+  display:flex;align-items:center;justify-content:center;gap:11px;
+  margin:2px 0 9px;
+  color:var(--gold);font:600 .7rem 'Cinzel',serif;letter-spacing:3px;
+}
+.weds:before,.weds:after{
+  content:"";width:52px;height:1px;background:var(--gold-light);
+}
+.nikah-status{
+  position:relative;z-index:5;
+  display:inline-block;margin:3px auto 0;padding:7px 15px;
+  border:1px solid var(--gold);border-radius:50px;
+  color:var(--maroon);background:rgba(255,250,241,.75);
+  font:600 .65rem 'Cinzel',serif;letter-spacing:2px;
+}
+.date-main{
+  position:relative;z-index:5;
+  margin-top:22px;color:var(--ink);
+  font:1rem 'Cinzel',serif;letter-spacing:1px;
+}
+.hijri{
+  position:relative;z-index:5;
+  margin-top:4px;color:#84776f;font:.64rem 'Amiri',serif;
+}
+.dua{
+  position:relative;z-index:5;
+  margin:27px auto 0;padding:16px 15px;max-width:400px;
+  border-top:1px solid var(--gold-light);
+  border-bottom:1px solid var(--gold-light);
+  color:var(--maroon);
+}
+.dua-arabic{font:1.25rem/1.7 'Amiri',serif}
+.dua-en{margin-top:3px;color:#776b63;font:.61rem/1.6 'Montserrat',sans-serif;font-style:italic}
+
+/* ---------- sections ---------- */
+.section{
+  position:relative;margin-top:18px;padding:23px 18px;
+  background:rgba(251,247,239,.9);
+  border:1px solid rgba(176,138,66,.65);
+  box-shadow:0 10px 28px rgba(63,35,25,.08);
+}
+.section-title{
+  color:var(--maroon);font:600 .9rem 'Cinzel',serif;
+  letter-spacing:2px;text-transform:uppercase;
+}
+.section-sub{
+  margin-top:5px;color:#81756e;font:.65rem 'Montserrat',sans-serif;
+}
+.countdown{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:17px;
+}
+.time{
+  padding:11px 4px 9px;border:1px solid var(--gold-light);
+  background:linear-gradient(145deg,#fffaf2,#f0e4d4);
+}
+.time strong{display:block;color:var(--maroon);font:700 1.35rem 'Cinzel',serif}
+.time span{display:block;margin-top:3px;color:#83766d;font:.55rem 'Montserrat',sans-serif;letter-spacing:1px;text-transform:uppercase}
+
+.event{
+  margin-top:16px;padding:19px 16px;border:1px solid rgba(176,138,66,.55);
+  background:rgba(255,251,244,.74);
+}
+.event-badge{
+  display:inline-block;padding:6px 13px;border-radius:30px;
+  color:#fff5e5;background:var(--maroon);
+  font:600 .65rem 'Cinzel',serif;letter-spacing:1.5px;
+}
+.event-date{margin-top:12px;color:var(--ink);font:600 .78rem 'Cinzel',serif}
+.event-time{margin-top:6px;color:#746861;font:.66rem 'Montserrat',sans-serif}
+.rule{border:0;border-top:1px dashed var(--gold-light);margin:15px 0}
+.venue-label{color:var(--maroon);font:600 .65rem 'Cinzel',serif;letter-spacing:1.5px}
+.venue-name{margin-top:7px;color:#4c3b36;font:600 .82rem 'Montserrat',sans-serif}
+.venue-address{margin-top:5px;color:#746861;font:.64rem/1.65 'Montserrat',sans-serif}
+
+.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
+.action{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:9px 13px;border-radius:25px;text-decoration:none;
+  color:#fff8eb;background:linear-gradient(135deg,var(--maroon),#7a2c3b);
+  font:600 .62rem 'Montserrat',sans-serif;
+  box-shadow:0 5px 13px rgba(91,29,41,.18);
+  transition:transform .25s,box-shadow .25s;
+}
+.action:hover{transform:translateY(-2px);box-shadow:0 8px 17px rgba(91,29,41,.24)}
+
+.contact-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:14px}
+.contact{
+  padding:7px 10px;border:1px solid rgba(176,138,66,.45);
+  border-radius:20px;color:#594b46;background:#f2e7d8;
+  font:.58rem 'Montserrat',sans-serif;text-decoration:none;
+}
+.contact i{color:var(--maroon);margin-right:4px}
+
+.footer{
+  margin:22px auto 0;max-width:430px;color:#796d66;
+  font:.62rem/1.7 'Montserrat',sans-serif;
+}
+.footer strong{color:var(--maroon);font-family:'Cinzel',serif;letter-spacing:1px}
+.footer-script{margin-top:6px;color:var(--rose);font:1.65rem 'Great Vibes',cursive}
+
+/* ---------- audio ---------- */
+.audio-btn{
+  position:fixed;right:17px;bottom:17px;z-index:1000;
+  width:48px;height:48px;border:1px solid #fff;border-radius:50%;
+  display:grid;place-items:center;cursor:pointer;
+  color:#fff7e9;background:var(--maroon);
+  box-shadow:0 7px 18px rgba(0,0,0,.22);
+}
+.audio-btn.playing{animation:audioPulse 1.7s ease-in-out infinite}
+.audio-hint{
+  position:fixed;right:72px;bottom:23px;z-index:999;
+  padding:7px 10px;border-radius:20px;
+  color:#fff7e9;background:rgba(63,18,29,.88);
+  font:.55rem 'Montserrat',sans-serif;
+  opacity:0;transform:translateY(4px);pointer-events:none;
+  transition:.3s;
+}
+.audio-hint.show{opacity:1;transform:translateY(0)}
+
+/* subtle floating botanical petals, not emoji */
+.petal{
+  position:fixed;top:-20px;z-index:20;pointer-events:none;
+  width:7px;height:11px;border-radius:70% 20% 70% 20%;
+  background:rgba(169,111,112,.62);
+  animation:fall linear forwards;
+}
+
+/* ---------- animations ---------- */
+@keyframes sealPulse{50%{transform:scale(1.045);box-shadow:0 0 0 7px rgba(223,201,144,.15),0 0 48px rgba(223,201,144,.32)}}
+@keyframes audioPulse{50%{box-shadow:0 0 0 8px rgba(91,29,41,.12),0 7px 18px rgba(0,0,0,.22)}}
+@keyframes fall{
+  0%{opacity:0;transform:translateY(-20px) translateX(0) rotate(0)}
+  12%{opacity:.8}
+  100%{opacity:0;transform:translateY(108vh) translateX(80px) rotate(430deg)}
+}
+
+@media(max-width:520px){
+  .page{padding:10px 8px 35px}
+  .hero{min-height:800px;padding-left:19px;padding-right:19px}
+  .floral{width:175px;height:195px}
+  .nikah-label{font-size:4rem}
+  .bismillah{margin-top:34px;font-size:1.75rem}
+  .name{font-size:2.85rem}
+  .intro{font-size:.62rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Opening screen -->
+<div id="opening-overlay">
+  <div class="curtain left"></div>
+  <div class="curtain right"></div>
+  <div class="opening-content" onclick="openInvitation()">
+    <div class="opening-ornament"><span>A & A</span></div>
+    <div class="opening-arabic">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <div class="opening-line"></div>
+    <div class="opening-text">Tap to open the invitation</div>
+  </div>
+</div>
+
+<audio id="wedding-audio" loop preload="auto">
+  <source src="wedding-song.mp3" type="audio/mpeg">
+</audio>
+
+<button class="audio-btn" id="audio-toggle" aria-label="Toggle music" onclick="toggleAudio()">
+  <i class="fa-solid fa-volume-xmark"></i>
+</button>
+<div class="audio-hint" id="audio-hint">Tap for music</div>
+
+<main class="page">
+
+  <section class="hero">
+
+    <!-- Top-left botanical cluster -->
+    <svg class="floral tl" viewBox="0 0 210 230" aria-hidden="true">
+      <path class="branch" d="M8 210 C30 163 37 119 66 83 C87 57 115 31 163 7"/>
+      <path class="branch2" d="M30 168 C23 137 19 115 20 91"/>
+      <path class="branch2" d="M49 113 C73 109 91 98 108 82"/>
+      <path class="branch2" d="M67 83 C57 57 51 38 53 18"/>
+      <path class="branch2" d="M91 58 C116 59 138 49 154 32"/>
+      <ellipse class="leaf" cx="27" cy="144" rx="7" ry="18" transform="rotate(-35 27 144)"/>
+      <ellipse class="leaf-light" cx="40" cy="126" rx="6" ry="16" transform="rotate(48 40 126)"/>
+      <ellipse class="leaf" cx="53" cy="101" rx="7" ry="17" transform="rotate(-42 53 101)"/>
+      <ellipse class="leaf-light" cx="67" cy="91" rx="6" ry="16" transform="rotate(55 67 91)"/>
+      <ellipse class="leaf" cx="66" cy="67" rx="7" ry="17" transform="rotate(-22 66 67)"/>
+      <ellipse class="leaf-light" cx="76" cy="51" rx="6" ry="15" transform="rotate(48 76 51)"/>
+      <ellipse class="leaf" cx="104" cy="61" rx="7" ry="18" transform="rotate(-48 104 61)"/>
+      <ellipse class="leaf-light" cx="116" cy="49" rx="6" ry="16" transform="rotate(45 116 49)"/>
+      <ellipse class="leaf" cx="135" cy="37" rx="7" ry="18" transform="rotate(-45 135 37)"/>
+      <g transform="translate(25 95)">
+        <ellipse class="petal-pale" cx="0" cy="-14" rx="9" ry="16"/>
+        <ellipse class="petal-pale" cx="14" cy="-3" rx="9" ry="16" transform="rotate(72 14 -3)"/>
+        <ellipse class="petal-pale" cx="-14" cy="-3" rx="9" ry="16" transform="rotate(-72 -14 -3)"/>
+        <ellipse class="petal-rose" cx="0" cy="9" rx="9" ry="15"/>
+        <circle class="center" cx="0" cy="0" r="4"/>
+      </g>
+      <g transform="translate(92 70) scale(.82)">
+        <ellipse class="petal-rose" cx="0" cy="-14" rx="9" ry="16"/>
+        <ellipse class="petal-pale" cx="14" cy="-3" rx="9" ry="16" transform="rotate(72 14 -3)"/>
+        <ellipse class="petal-pale" cx="-14" cy="-3" rx="9" ry="16" transform="rotate(-72 -14 -3)"/>
+        <ellipse class="petal-rose" cx="0" cy="9" rx="9" ry="15"/>
+        <circle class="center" cx="0" cy="0" r="4"/>
+      </g>
+      <g transform="translate(151 31) scale(.72)">
+        <ellipse class="petal-cream" cx="0" cy="-15" rx="10" ry="17"/>
+        <ellipse class="petal-cream" cx="15" cy="-3" rx="10" ry="17" transform="rotate(72 15 -3)"/>
+        <ellipse class="petal-pale" cx="-15" cy="-3" rx="10" ry="17" transform="rotate(-72 -15 -3)"/>
+        <ellipse class="petal-cream" cx="0" cy="10" rx="10" ry="17"/>
+        <circle class="center" cx="0" cy="0" r="4"/>
+      </g>
+    </svg>
+
+    <!-- mirrored corners -->
+    <svg class="floral tr" viewBox="0 0 210 230" aria-hidden="true">
+      <path class="branch" d="M8 210 C30 163 37 119 66 83 C87 57 115 31 163 7"/>
+      <path class="branch2" d="M30 168 C23 137 19 115 20 91"/>
+      <path class="branch2" d="M49 113 C73 109 91 98 108 82"/>
+      <path class="branch2" d="M67 83 C57 57 51 38 53 18"/>
+      <path class="branch2" d="M91 58 C116 59 138 49 154 32"/>
+      <ellipse class="leaf" cx="27" cy="144" rx="7" ry="18" transform="rotate(-35 27 144)"/>
+      <ellipse class="leaf-light" cx="40" cy="126" rx="6" ry="16" transform="rotate(48 40 126)"/>
+      <ellipse class="leaf" cx="53" cy="101" rx="7" ry="17" transform="rotate(-42 53 101)"/>
+      <ellipse class="leaf-light" cx="67" cy="91" rx="6" ry="16" transform="rotate(55 67 91)"/>
+      <ellipse class="leaf" cx="66" cy="67" rx="7" ry="17" transform="rotate(-22 66 67)"/>
+      <ellipse class="leaf-light" cx="76" cy="51" rx="6" ry="15" transform="rotate(48 76 51)"/>
+      <ellipse class="leaf" cx="104" cy="61" rx="7" ry="18" transform="rotate(-48 104 61)"/>
+      <ellipse class="leaf-light" cx="116" cy="49" rx="6" ry="16" transform="rotate(45 116 49)"/>
+      <ellipse class="leaf" cx="135" cy="37" rx="7" ry="18" transform="rotate(-45 135 37)"/>
+      <g transform="translate(25 95)">
+        <ellipse class="petal-pale" cx="0" cy="-14" rx="9" ry="16"/>
+        <ellipse class="petal-pale" cx="14" cy="-3" rx="9" ry="16" transform="rotate(72 14 -3)"/>
+        <ellipse class="petal-pale" cx="-14" cy="-3" rx="9" ry="16" transform="rotate(-72 -14 -3)"/>
+        <ellipse class="petal-rose" cx="0" cy="9" rx="9" ry="15"/>
+        <circle class="center" cx="0" cy="0" r="4"/>
+      </g>
+      <g transform="translate(92 70) scale(.82)">
+        <ellipse class="petal-rose" cx="0" cy="-14" rx="9" ry="16"/>
+        <ellipse class="petal-pale" cx="14" cy="-3" rx="9" ry="16" transform="rotate(72 14 -3)"/>
+        <ellipse class="petal-pale" cx="-14" cy="-3" rx="9" ry="16" transform="rotate(-72 -14 -3)"/>
+        <ellipse class="petal-rose" cx="0" cy="9" rx="9" ry="15"/>
+        <circle class="center" cx="0" cy="0" r="4"/>
+      </g>
+      <g transform="translate(151 31) scale(.72)">
+        <ellipse class="petal-cream" cx="0" cy="-15" rx="10" ry="17"/>
+        <ellipse class="petal-cream" cx="15" cy="-3" rx="10" ry="17" transform="rotate(72 15 -3)"/>
+        <ellipse class="petal-pale" cx="-15" cy="-3" rx="10" ry="17" transform="rotate(-72 -15 -3)"/>
+        <ellipse class="petal-cream" cx="0" cy="10" rx="10" ry="17"/>
+        <circle class="center" cx="0" cy="0" r="4"/>
+      </g>
+    </svg>
+
+    <svg class="floral bl" viewBox="0 0 210 230" aria-hidden="true">
+      <path class="branch" d="M8 210 C30 163 37 119 66 83 C87 57 115 31 163 7"/>
+      <path class="branch2" d="M30 168 C23 137 19 115 20 91"/>
+      <path class="branch2" d="M49 113 C73 109 91 98 108 82"/>
+      <path class="branch2" d="M67 83 C57 57 51 38 53 18"/>
+      <ellipse class="leaf" cx="27" cy="144" rx="7" ry="18" transform="rotate(-35 27 144)"/>
+      <ellipse class="leaf-light" cx="40" cy="126" rx="6" ry="16" transform="rotate(48 40 126)"/>
+      <ellipse class="leaf" cx="53" cy="101" rx="7" ry="17" transform="rotate(-42 53 101)"/>
+      <ellipse class="leaf-light" cx="67" cy="91" rx="6" ry="16" transform="rotate(55 67 91)"/>
+      <g transform="translate(25 95)">
+        <ellipse class="petal-pale" cx="0" cy="-14" rx="9" ry="16"/>
+        <ellipse class="petal-pale" cx="14" cy="-3" rx="9" ry="16" transform="rotate(72 14 -3)"/>
+        <ellipse class="petal-pale" cx="-14" cy="-3" rx="9" ry="16" transform="rotate(-72 -14 -3)"/>
+        <ellipse class="petal-rose" cx="0" cy="9" rx="9" ry="15"/>
+        <circle class="center" cx="0" cy="0" r="4"/>
+      </g>
+      <g transform="translate(87 62) scale(.72)">
+        <ellipse class="petal-cream" cx="0" cy="-15" rx="10" ry="17"/>
+        <ellipse class="petal-cream" cx="15" cy="-3" rx="10" ry="17" transform="rotate(72 15 -3)"/>
+        <ellipse class="petal-pale" cx="-15" cy="-3" rx="10" ry="17" transform="rotate(-72 -15 -3)"/>
+        <ellipse class="petal-cream" cx="0" cy="10" rx="10" ry="17"/>
+        <circle class="center" cx="0" cy="0" r="4"/>
+      </g>
+    </svg>
+
+    <svg class="floral br" viewBox="0 0 210 230" aria-hidden="true">
+      <path class="branch" d="M8 210 C30 163 37 119 66 83 C87 57 115 31 163 7"/>
+      <path class="branch2" d="M30 168 C23 137 19 115 20 91"/>
+      <path class="branch2" d="M49 113 C73 109 91 98 108 82"/>
+      <path class="branch2" d="M67 83 C57 57 51 38 53 18"/>
+      <ellipse class="leaf" cx="27" cy="144" rx="7" ry="18" transform="rotate(-35 27 144)"/>
+      <ellipse class="leaf-light" cx="40" cy="126" rx="6" ry="16" transform="rotate(48 40 126)"/>
+      <ellipse class="leaf" cx="53" cy="101" rx="7" ry="17" transform="rotate(-42 53 101)"/>
+      <ellipse class="leaf-light" cx="67" cy="91" rx="6" ry="16" transform="rotate(55 67 91)"/>
+      <g transform="translate(25 95)">
+        <ellipse class="petal-pale" cx="0" cy="-14" rx="9" ry="16"/>
+        <ellipse class="petal-pale" cx="14" cy="-3" rx="9" ry="16" transform="rotate(72 14 -3)"/>
+        <ellipse class="petal-pale" cx="-14" cy="-3" rx="9" ry="16" transform="rotate(-72 -14 -3)"/>
+        <ellipse class="petal-rose" cx="0" cy="9" rx="9" ry="15"/>
+        <circle class="center" cx="0" cy="0" r="4"/>
+      </g>
+      <g transform="translate(87 62) scale(.72)">
+        <ellipse class="petal-cream" cx="0" cy="-15" rx="10" ry="17"/>
+        <ellipse class="petal-cream" cx="15" cy="-3" rx="10" ry="17" transform="rotate(72 15 -3)"/>
+        <ellipse class="petal-pale" cx="-15" cy="-3" rx="10" ry="17" transform="rotate(-72 -15 -3)"/>
+        <ellipse class="petal-cream" cx="0" cy="10" rx="10" ry="17"/>
+        <circle class="center" cx="0" cy="0" r="4"/>
+      </g>
+    </svg>
+
+    <div class="bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <div class="translation">"ALLAH" IN THE NAME OF THE MOST BENEFICENT & THE MOST MERCIFUL</div>
+    
+    <div class="nikah-label">Nikah</div>
+    <div class="est">A celebration of love &amp; dua</div>
+
+    <div class="intro">
+      Together with their families<br>
+      you are cordially invited to attend
+    </div>
+
+    <div class="ornament-row"><i></i><span>❦</span><i></i></div>
+
+    <div class="host">Mrs. &amp; Mr. Yusuf Shaikh</div>
+    <div class="host-copy">solicit your gracious presence on the occasion of the<br>
+      Dawat-e-Walima of their loving son</div>
+
+    <div class="names">
+      <div class="name">Gul Aftab Shaikh</div>
+      <div class="parent">( S/o. Mr. Yusuf Ataulla Shaikh )</div>
+
+      <div class="weds">WEDS</div>
+
+      <div class="name">Asifa Shaikh</div>
+      <div class="parent">( D/o. Mr. Anwar Maqbool Shaikh )</div>
+    </div>
+
+    <div class="nikah-status">NIKAH IN SHA ALLAH</div>
+
+    <div class="date-main">Thursday, 12th November 2026</div>
+    <div class="hijri">( 2 Jumada al-Akhirah 1448 Hijri )</div>
+
+    <div class="dua">
+      <div class="dua-arabic">بَارَكَ اللهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</div>
+      <div class="dua-en">May Allah bless you both, bless your marriage, and unite you in goodness.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">Counting Down</div>
+    <div class="section-sub">Until the Walima celebration</div>
+    <div class="countdown">
+      <div class="time"><strong id="days">00</strong><span>Days</span></div>
+      <div class="time"><strong id="hours">00</strong><span>Hours</span></div>
+      <div class="time"><strong id="mins">00</strong><span>Minutes</span></div>
+      <div class="time"><strong id="secs">00</strong><span>Seconds</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="event-badge">DAWAT-E-WALIMA</div>
+    <div class="event-date">Friday, 13th November 2026</div>
+    <div class="event-time"><i class="fa-regular fa-clock"></i> Reception &amp; Dinner: 07:00 PM to 11:00 PM</div>
+
+    <hr class="rule">
+
+    <div class="venue-label"><i class="fa-solid fa-location-dot"></i> &nbsp;VENUE</div>
+    <div class="venue-name">GRIH KALYAN KENDRA HALL</div>
+    <div class="venue-address">
+      GRIH KALYAN SAMAJ SADAN COMMUNITY HALL,<br>
+      C.G.S Colony Sector 7, Phase 1, Opp. ACP Office,<br>
+      Shaikh Misri Dargah Road, Antop Hill, Wadala,<br>
+      Mumbai - 400037
+    </div>
+
+    <div class="actions">
+      <a class="action" href="https://maps.google.com/?q=Grih+Kalyan+Kendra+Hall+Antop+Hill+Wadala+Mumbai" target="_blank" rel="noopener">
+        <i class="fa-solid fa-map-location-dot"></i> Directions
+      </a>
+      <a class="action" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Gul+Aftab+%26+Asifa+Walima&dates=20261113T133000Z/20261113T173000Z&details=Dawat-e-Walima+Reception+%26+Dinner&location=Grih+Kalyan+Kendra+Hall,+Antop+Hill,+Wadala,+Mumbai" target="_blank" rel="noopener">
+        <i class="fa-solid fa-calendar-plus"></i> Save Date
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">Contact Details</div>
+    <div class="contact-grid">
+      <a class="contact" href="tel:9699960503"><i class="fa-solid fa-phone"></i> Mr. Anwar</a>
+      <a class="contact" href="tel:9870453310"><i class="fa-solid fa-phone"></i> Mr. Ismail</a>
+    </div>
+  </section>
+
+  <div class="footer">
+    <strong>WITH BEST COMPLIMENTS FROM</strong><br>
+    FAMILY, FRIENDS &amp; ALL RELATIVES
+    <div class="footer-script">Yusuf Shaikh &amp; Family</div>
+  </div>
+
+</main>
+
+<script>
+const audio = document.getElementById("wedding-audio");
+const audioButton = document.getElementById("audio-toggle");
+const audioIcon = audioButton.querySelector("i");
+const overlay = document.getElementById("opening-overlay");
+const hint = document.getElementById("audio-hint");
+
+function setAudioUI(playing){
+  audioButton.classList.toggle("playing", playing);
+  audioIcon.className = playing ? "fa-solid fa-music" : "fa-solid fa-volume-xmark";
+}
+
+function openInvitation(){
+  overlay.classList.add("open");
+
+  // Music is started only after a real user tap, which avoids browser autoplay blocking.
+  audio.play().then(()=>{
+    setAudioUI(true);
+  }).catch(()=>{
+    setAudioUI(false);
+    hint.classList.add("show");
+    setTimeout(()=>hint.classList.remove("show"),3000);
+  });
+
+  startPetals();
+
+  setTimeout(()=>overlay.style.display="none",1450);
+}
+
+function toggleAudio(){
+  if(audio.paused){
+    audio.play().then(()=>setAudioUI(true)).catch(()=>{
+      hint.textContent="Check that wedding-song.mp3 is uploaded";
+      hint.classList.add("show");
+      setTimeout(()=>hint.classList.remove("show"),3500);
+    });
+  }else{
+    audio.pause();
+    setAudioUI(false);
+  }
+}
+
+audio.addEventListener("ended",()=>setAudioUI(false));
+audio.addEventListener("error",()=>{
+  hint.textContent="Music file not found: wedding-song.mp3";
+});
+
+/* Countdown */
+const eventDate = new Date("November 13, 2026 19:00:00").getTime();
+
+function updateCountdown(){
+  const diff = eventDate - Date.now();
+  if(diff <= 0){
+    ["days","hours","mins","secs"].forEach(id=>document.getElementById(id).textContent="00");
+    return;
+  }
+
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const mins = Math.floor((diff % 3600000) / 60000);
+  const secs = Math.floor((diff % 60000) / 1000);
+
+  document.getElementById("days").textContent=String(days).padStart(2,"0");
+  document.getElementById("hours").textContent=String(hours).padStart(2,"0");
+  document.getElementById("mins").textContent=String(mins).padStart(2,"0");
+  document.getElementById("secs").textContent=String(secs).padStart(2,"0");
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+/* Falling petals — CSS shapes instead of emoji */
+let petalsStarted=false;
+function createPetal(){
+  const p=document.createElement("div");
+  p.className="petal";
+  p.style.left=(Math.random()*100)+"vw";
+  p.style.animationDuration=(5+Math.random()*4)+"s";
+  p.style.opacity=(.25+Math.random()*.45);
+  p.style.transform=`rotate(${Math.random()*80}deg)`;
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),10000);
+}
+function startPetals(){
+  if(petalsStarted)return;
+  petalsStarted=true;
+  for(let i=0;i<7;i++)setTimeout(createPetal,i*260);
+  setInterval(createPetal,1200);
+}
+</script>
+</body>
+</html>
